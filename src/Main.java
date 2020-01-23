@@ -11,15 +11,8 @@ public class Main {
         System.out.println("Enter LOGIN PSWRD");
         String inppwd = sc.nextLine();
 
-        System.out.println("Welcome Sir!");
-
-//        try {
-//            Runtime.getRuntime().exec("clear");
-//        } catch (IOException e) {
-//
-//        }
-
-        if (lm.checkID(inpid) && lm.checkPswrd(inppwd)) System.out.println(Encryption.MD5("java"));
+        if (lm.checkID(inpid) && lm.checkPswrd(inppwd)) System.out.println("Welcome Sir!");
+        else System.out.println("Your ID or PASSWORD did not match");
 
     }
 }

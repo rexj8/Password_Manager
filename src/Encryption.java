@@ -1,8 +1,16 @@
 import java.math.BigInteger;
-import java.security.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class Encryption {
 
+    /*
+     *
+     * This method takes String password and convert it into it's hash form
+     *
+     * @param String password
+     * @return It returns encrypted form of password
+     */
     public static String MD5(String pswrd) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
