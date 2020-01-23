@@ -6,17 +6,16 @@ public class Main {
         LoginMenu lm = new LoginMenu();
         Scanner sc = new Scanner(System.in);
 
-//        System.out.println("================");
-//        System.out.println("   LOGIN MENU   ");
-//        System.out.println("================");
-//
-//        System.out.println("Enter LOGIN ID");
-//        String inpLGNID = sc.nextLine().toLowerCase();
-//        System.out.println("Enter LOGIN PSWRD");
-//        String inpLGNPWD = sc.nextLine();
-//
-//        if (lm.checkID(inpLGNID) && lm.checkPswrd(inpLGNPWD))
-        {
+        System.out.println("================");
+        System.out.println("   LOGIN MENU   ");
+        System.out.println("================");
+
+        System.out.println("Enter LOGIN ID");
+        String inpLGNID = sc.nextLine().toLowerCase();
+        System.out.println("Enter LOGIN PSWRD");
+        String inpLGNPWD = sc.nextLine();
+
+        if (lm.checkID(inpLGNID) && lm.checkPswrd(inpLGNPWD)) {
             System.out.println("Welcome Sir!");
             System.out.println("===============");
             System.out.println("   MAIN MENU   ");
@@ -39,10 +38,11 @@ public class Main {
                 String inpPWD = sc.next();
 
                 AddIntoDB.add(inpURL, inpUsrNAME, inpPWD);
+
+
             } else if (inpMENU == 4) System.exit(0);
             else System.out.println("Wrong input!!");
-        }
-//        else System.out.println("Your ID or PASSWORD did not match");
+        } else System.out.println("Your ID or PASSWORD did not match");
 
     }
 }
