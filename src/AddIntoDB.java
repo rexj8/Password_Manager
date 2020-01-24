@@ -1,4 +1,7 @@
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class AddIntoDB {
 
@@ -13,10 +16,6 @@ public class AddIntoDB {
             pstmt.setString(2, Uname);
             pstmt.setString(3, pwd);
 
-            Statement stmt = con.createStatement();
-            ResultSet results = stmt.executeQuery("SELECT * FROM CREDENTIALS;");
-
-            System.out.println(results);
 
 
         } catch (SQLException e) {
