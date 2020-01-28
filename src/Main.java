@@ -8,48 +8,58 @@ public class Main {
 
         System.out.println();
         System.out.println("_______________Password_Management_System_______________\n");
-//        System.out.println("================");
-//        System.out.println("   LOGIN MENU   ");
-//        System.out.println("================");
-//
-//        System.out.println("Enter LOGIN ID");
-//        String inpLGNID = sc.nextLine().toLowerCase();
-//        System.out.println("Enter LOGIN PSWRD");
-//        String inpLGNPWD = sc.nextLine();
-//
-//        if (lm.checkID(inpLGNID) && lm.checkPswrd(inpLGNPWD))
-        {
-            System.out.println("Welcome Sir!");
-            System.out.println("===============");
-            System.out.println("   MAIN MENU   ");
-            System.out.println("===============");
-            System.out.println("1. ADD your data");
-            System.out.println("2. REMOVE some data");
-            System.out.println("3. OPEN url");
-            System.out.println("4. EXIT");
+        System.out.println("================");
+        System.out.println("   LOGIN MENU   ");
+        System.out.println("================");
 
-            int inpMENU = sc.nextInt();
+        System.out.println("Enter LOGIN ID");
+        String inpLGNID = sc.nextLine().toLowerCase();
+        System.out.println("Enter LOGIN PSWRD");
+        String inpLGNPWD = sc.nextLine();
 
-            if (inpMENU == 1) {
-                System.out.print("URL-");
-                String inpURL = sc.next();
+        if (lm.checkID(inpLGNID) && lm.checkPswrd(inpLGNPWD)) {
+            System.out.println("                      Welcome Sir!");
+            while (true) {
+                System.out.println("\n\n===============");
+                System.out.println("   MAIN MENU   ");
+                System.out.println("===============");
+                System.out.println("1. SHOW list");
+                System.out.println("2. ADD your data");
+                System.out.println("3. REMOVE some data");
+                System.out.println("4. OPEN url");
+                System.out.println("5. EXIT");
 
-                System.out.print("USER NAME-");
-                String inpUsrNAME = sc.next();
+                int inpMENU = sc.nextInt();
 
-                System.out.print("PASSWORD-");
-                String inpPWD = sc.next();
+                if (inpMENU == 1) {
+                    ShowItemsInList.showList();
+                } else if (inpMENU == 2) {
+                    System.out.print("URL-");
+                    String inpURL = sc.next();
 
-                AddIntoDB.add(inpURL, inpUsrNAME, inpPWD);
-            } else if (inpMENU == 2) {
-                DelFromDB.showList();
-            } else if (inpMENU == 3) {
-                OpenURL.showList();
-                OpenURL.getLink("http://www.google.com");
-            } else if (inpMENU == 4) System.exit(0);
-            else System.out.println("Wrong input!!");
-//        } else System.out.println("Your ID or PASSWORD did not match");
+                    System.out.print("USER NAME-");
+                    String inpUsrNAME = sc.next();
 
-        }
+                    System.out.print("PASSWORD-");
+                    String inpPWD = sc.next();
+
+                    AddIntoDB.add(inpURL, inpUsrNAME, inpPWD);
+                } else if (inpMENU == 3) {
+                    DelFromDB.showList();
+                    System.out.println("\nEnter which data you wanna remove");
+                    int n = sc.nextInt();
+                    int temp = n - 1;
+                    DelFromDB.remove(temp);
+                } else if (inpMENU == 4) {
+                    OpenURL.showList();
+                    System.out.println("\nEnter which URL you wanna open");
+                    int n = sc.nextInt();
+                    OpenURL.getLink(n);
+                    break;
+                } else if (inpMENU == 5) System.exit(0);
+                else System.out.println("\n                      Wrong input!!");
+            }
+        } else System.out.println("Your ID or PASSWORD did not match");
     }
+
 }

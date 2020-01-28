@@ -13,10 +13,12 @@ public class AddIntoDB {
             PreparedStatement pstmt = con.prepareStatement(qry);
 
             pstmt.setString(1, url);
-            pstmt.setString(2, Uname);
-            pstmt.setString(3, pwd);
+            pstmt.setString(2, Encryption.BEA1Encode(Uname));
+            pstmt.setString(3, Encryption.BEA1Encode(pwd));
 
+            pstmt.executeUpdate();
 
+            System.out.println("\n                      Successfully added!!");
 
         } catch (SQLException e) {
             e.printStackTrace();

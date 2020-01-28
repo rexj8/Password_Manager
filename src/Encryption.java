@@ -2,6 +2,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+
 public class Encryption {
 
     /*
@@ -38,7 +39,7 @@ public class Encryption {
                 StringBuffer sb = new StringBuffer();
 
                 for (int i = 0; i < result.length; i++) {
-                    sb.append(Integer.toString((result[i] & 0xff) + 0x100 , 16).substring(1));
+                    sb.append(Integer.toString((result[i] & 0xff) + 0x100, 16).substring(1));
                 }
                 return sb.toString();
 
@@ -46,4 +47,43 @@ public class Encryption {
                 throw new RuntimeException();
             }
     }
+
+    public static String BEA1Encode(String pswrd) {
+        char[] temparr = pswrd.toCharArray();
+
+        for (int i = 0; i < pswrd.length(); i++) {
+
+
+            if ((int) pswrd.charAt(i) >= 65 && (int) pswrd.charAt(i) < 90) {
+                temparr[i] = (char) (((int) pswrd.charAt(i)) + 1);
+            } else if ((int) pswrd.charAt(i) >= 97 && (int) pswrd.charAt(i) < 122) {
+                temparr[i] = (char) (((int) pswrd.charAt(i)) + 1);
+            } else if ((int) pswrd.charAt(i) == 90) temparr[i] = 'A';
+
+            else if ((int) pswrd.charAt(i) == 122) temparr[i] = 'a';
+        }
+        String cypherText = new String(temparr);
+
+        return cypherText;
+    }
+
+    public static String BEA1Decode(String cypherText) {
+        char[] temparr = cypherText.toCharArray();
+
+        for (int i = 0; i < cypherText.length(); i++) {
+
+
+            if ((int) cypherText.charAt(i) > 65 && (int) cypherText.charAt(i) <= 90) {
+                temparr[i] = (char) (((int) cypherText.charAt(i)) - 1);
+            } else if ((int) cypherText.charAt(i) > 97 && (int) cypherText.charAt(i) <= 122) {
+                temparr[i] = (char) (((int) cypherText.charAt(i)) - 1);
+            } else if ((int) cypherText.charAt(i) == 65) temparr[i] = 'Z';
+
+            else if ((int) cypherText.charAt(i) == 97) temparr[i] = 'z';
+        }
+        String pswd = new String(temparr);
+
+        return pswd;
+    }
+
 }
